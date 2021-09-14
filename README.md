@@ -1,24 +1,35 @@
-# README
+# Repro of issue with codeclimate rubocop.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+1. codeclimate prepare
+2. codeclimate analyze app/models/test_multi_line.rb
 
-Things you may want to cover:
+Expected: no issues
 
-* Ruby version
+Actual: 1 issue
 
-* System dependencies
+```ruby
+$ codeclimate analyze app/models/test_multi_line.rb
+Starting analysis
+Running structure: Done!
+Running bundler-audit: Done!
+Running rubocop: Done!
 
-* Configuration
+== app/models/test_multi_line.rb (1 issue) ==
+6-7: Indent the first argument one step more than the start of the previous line. [rubocop]
 
-* Database creation
+Analysis complete! Found 1 issue.
+```
 
-* Database initialization
+3. bundle exec rubocop
 
-* How to run the test suite
+Expected: no issues
 
-* Services (job queues, cache servers, search engines, etc.)
+Actual: no issues
 
-* Deployment instructions
+```ruby
+$ bundle exec rubocop app/models/test_multi_line.rb
+Inspecting 1 file
+.
 
-* ...
+1 file inspected, no offenses detected
+```
