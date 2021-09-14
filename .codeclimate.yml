@@ -40,10 +40,9 @@ plugins:
   rubocop:
     enabled: true
     channel: rubocop-0-92
-    # Mry can cause issues where rubocop doesn't behave in codeclimate as it does locally
-    # https://github.com/codeclimate/codeclimate-rubocop/issues/251
-    mry:
-      disabled: true
+    checks:
+      mry:
+        disabled: true
     config:
       file: "dutchie_style_rubocop.yml"
 
