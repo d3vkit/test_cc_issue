@@ -1,0 +1,54 @@
+version: "2"         # required to adjust maintainability checks
+prepare:
+  fetch:
+    - url: "https://raw.githubusercontent.com/GetDutchie/Dutchie-Style/master/default.yml"
+      path: "dutchie_style_rubocop.yml"
+checks:
+  argument-count:
+    config:
+      threshold: 4
+  complex-logic:
+    config:
+      threshold: 4
+  file-lines:
+    config:
+      threshold: 250
+  method-complexity:
+    config:
+      threshold: 5
+  method-count:
+    config:
+      threshold: 20
+  method-lines:
+    config:
+      threshold: 25
+  nested-control-flow:
+    config:
+      threshold: 4
+  return-statements:
+    config:
+      threshold: 4
+  similar-code:
+    enabled: false
+  identical-code:
+    enabled: false
+plugins:
+  bundler-audit:
+    enabled: true
+  duplication:
+    enabled: false
+  rubocop:
+    enabled: true
+    channel: rubocop-0-92
+    # Mry can cause issues where rubocop doesn't behave in codeclimate as it does locally
+    # https://github.com/codeclimate/codeclimate-rubocop/issues/251
+    mry:
+      disabled: true
+    config:
+      file: "dutchie_style_rubocop.yml"
+
+exclude_patterns:
+  - "config/"
+  - "db/"
+  - "**/node_modules/"
+  - "**/vendor/"

@@ -1,0 +1,6 @@
+inherit_gem:
+  Dutchie-Style:
+    - default.yml
+
+Rails/SaveBang:
+  Enabled: false
